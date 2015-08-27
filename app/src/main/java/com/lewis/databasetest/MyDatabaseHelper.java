@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 /**
- * SQLite数据库
+ * 对SQLite数据库进行管理
  * Created by Administrator on 15-8-26.
  */
 public class MyDatabaseHelper extends SQLiteOpenHelper{
@@ -16,7 +16,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
             "author text," +
             "price real," +
             "pages integer," +
-            "name text)";
+            "name text," +
+            "category_id integer)";
     private final static String CREATE_CATEGORY = "create table Category (" +
             "id integer primary key autoincrement" +
             "category_name text," +
@@ -45,8 +46,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table if exists Book");
-        db.execSQL("drop table if exists Category");
-        onCreate(db);
+        switch (oldVersion){
+            case 1:
+                db.execSQL(CREATE_CATEGORY);
+            case 2:
+                db.execSQL("alert table Book add column category_id integer");
+            default:
+        }
     }
 }
