@@ -3,7 +3,6 @@ package com.lewis.databasetest;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 /**
  * 对SQLite数据库进行管理
@@ -11,7 +10,7 @@ import android.widget.Toast;
  */
 public class MyDatabaseHelper extends SQLiteOpenHelper{
     //数据库建表语句
-    public final static String CREATE_BOOK = "create table book (" +
+    public final static String CREATE_BOOK = "create table Book (" +
             "id integer primary key autoincrement," +
             "author text," +
             "price real," +
@@ -41,7 +40,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_BOOK);
         db.execSQL(CREATE_CATEGORY);
-        Toast.makeText(mContext,"Create succeeded",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(mContext,"Create succeeded",Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 注册内容提供器-->
+        <provider
+            android:authorities="com.example.databasetest.provider"
+            android:name="com.lewis.databasetest.DatabaseProvider" >
+
+        </provider>
     </application>
 
 </manifest>
